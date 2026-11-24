@@ -409,32 +409,36 @@ footer{font-size:13px}
 }
 
 
-/* Live development indicator: intentionally limited to the three active side projects. */
-.status--active{
+/* Project development state: shared pulse indicator, distinct semantic colors. */
+.status--indicator{
+  --status-dot:#18a65c;
+  --status-halo:rgba(24,166,92,.22);
   display:inline-flex;
   align-items:center;
   gap:8px;
-  color:#177245;
   font-weight:750;
   white-space:nowrap;
 }
-.status--active::before{
+.status--active{color:#177245;--status-dot:#18a65c;--status-halo:rgba(24,166,92,.22)}
+.status--complete{color:#235bd6;--status-dot:#3478f6;--status-halo:rgba(52,120,246,.22)}
+.status--planned{color:#b32c78;--status-dot:#ed61a5;--status-halo:rgba(237,97,165,.22)}
+.status--indicator::before{
   content:"";
   display:inline-block;
   flex:0 0 9px;
   width:9px;
   height:9px;
   border-radius:50%;
-  background:#18a65c;
-  box-shadow:0 0 0 3px rgba(24,166,92,.12),0 0 8px rgba(24,166,92,.32);
+  background:var(--status-dot);
+  box-shadow:0 0 0 3px var(--status-halo),0 0 8px var(--status-halo);
   animation:development-indicator-pulse 1.7s ease-in-out infinite;
 }
 @keyframes development-indicator-pulse{
-  0%,100%{opacity:1;box-shadow:0 0 0 3px rgba(24,166,92,.12),0 0 8px rgba(24,166,92,.32)}
-  50%{opacity:.12;box-shadow:0 0 0 0 rgba(24,166,92,0),0 0 0 rgba(24,166,92,0)}
+  0%,100%{opacity:1;box-shadow:0 0 0 3px var(--status-halo),0 0 8px var(--status-halo)}
+  50%{opacity:.12;box-shadow:0 0 0 0 transparent,0 0 0 transparent}
 }
 @media(prefers-reduced-motion:reduce){
-  .status--active::before{animation:none;opacity:1}
+  .status--indicator::before{animation:none;opacity:1}
 }
 
 </style>
@@ -564,7 +568,7 @@ footer{font-size:13px}
         <article class="project-card" data-category="personal">
           <div class="project-visual visual-memory" aria-hidden="true"><div class="chat-window"><div class="bubble"></div><div class="bubble right"></div><div class="bubble small"></div><div class="bubble right"></div></div></div>
           <div class="project-info">
-            <div class="project-kicker"><span>SIDE PROJECT · MOBILE AI</span><span class="status status--active">개발 중</span></div>
+            <div class="project-kicker"><span>SIDE PROJECT · MOBILE AI</span><span class="status status--indicator status--active">개발 중</span></div>
             <h3>기억공작소 <span class="project-platform">모바일 앱</span></h3>
             <p>그리운 가족·친구와 나눈 과거 대화 기록을 바탕으로, 익숙한 말투로 이야기를 나누고 함께한 추억을 회상하며 따뜻한 위로를 얻을 수 있도록 만드는 앱입니다.</p>
             <div class="project-plan"><strong>향후 구상</strong> 사진과 목소리 자료를 활용한 음성통화 및 영상통화 형태의 상호작용</div>
@@ -579,7 +583,7 @@ footer{font-size:13px}
             <div class="pet-taskbar"><span>◈</span><span>▦</span><span>◷</span></div>
           </div></div>
           <div class="project-info">
-            <div class="project-kicker"><span>SIDE PROJECT · DESKTOP APP</span><span class="status">개발 완료</span></div>
+            <div class="project-kicker"><span>SIDE PROJECT · DESKTOP APP</span><span class="status status--indicator status--complete">개발 완료</span></div>
             <h3>데스크탑펫 (뾰쭉이) <span class="project-platform">Windows · Mac</span></h3>
             <p>바탕화면에서 놀고, 산책을 다녀오기도 하는 고슴도치 캐릭터를 기르는 데스크톱 펫 프로젝트입니다. Windows와 macOS에서 사용할 수 있도록 제작한 개인용 앱입니다.</p>
             <div class="project-tags"><span>데스크톱 펫</span><span>고슴도치</span><span>인터랙션</span></div>
@@ -591,7 +595,7 @@ footer{font-size:13px}
             <div class="drawer-phone"><div class="drawer-top"></div><div class="drawer-page"><span>THE READING NOTE</span><i></i><i></i><i class="drawer-selected"></i><i></i><i></i><div class="drawer-selection">문장 저장 +</div></div><div class="drawer-home"></div></div>
           </div>
           <div class="project-info">
-            <div class="project-kicker"><span>SIDE PROJECT · READING APP</span><span class="status status--active">개발 중</span></div>
+            <div class="project-kicker"><span>SIDE PROJECT · READING APP</span><span class="status status--indicator status--active">개발 중</span></div>
             <h3>서랍형 독서 <span class="project-platform">모바일 앱</span></h3>
             <p>종이책에서 기록하고 싶은 문구를 휴대전화로 촬영하고 드래그해 선택하면, 책 정보·페이지·문구를 함께 저장하도록 설계한 독서 기록 앱입니다.</p>
             <div class="project-plan"><strong>향후 구상</strong> 전자책 화면을 캡처한 뒤 문구를 선택해 기록하는 기능</div>
@@ -604,7 +608,7 @@ footer{font-size:13px}
             <div class="place-panel"><div class="place-image">🍽️</div><div class="place-info"><span class="place-kicker">MY FOOD ARCHIVE</span><strong>오늘의 맛집 기록</strong><i></i><i class="short"></i><div class="place-mini"><span>⌖ 위치 후보</span><span>✦ 메뉴 분석</span></div></div></div>
           </div>
           <div class="project-info">
-            <div class="project-kicker"><span>SIDE PROJECT · FOOD ARCHIVE</span><span class="status status--active">개발 중</span></div>
+            <div class="project-kicker"><span>SIDE PROJECT · FOOD ARCHIVE</span><span class="status status--indicator status--active">개발 중</span></div>
             <h3>나의맛집플레이스 <span class="project-platform">모바일 앱</span></h3>
             <p>다녀온 음식점을 나만의 목록으로 기록하는 앱입니다. 음식 사진을 분석해 위치와 메뉴 정보를 제안받고, 식당 이름을 확인·저장해 방문 목록을 관리하도록 설계합니다.</p>
             <div class="project-tags"><span>음식 사진 AI</span><span>장소 기록</span><span>나만의 리스트</span></div>
@@ -616,7 +620,7 @@ footer{font-size:13px}
             <div class="outfit-board"><div class="outfit-top"><strong>오늘 뭐 입지?</strong><span>☀ 17°</span></div><div class="outfit-closet"><div class="outfit-piece">🧥</div><span>＋</span><div class="outfit-piece">👖</div><span>＋</span><div class="outfit-piece">👟</div></div><div class="outfit-bottom"><i></i><i></i><i class="short"></i></div></div>
           </div>
           <div class="project-info">
-            <div class="project-kicker"><span>SIDE PROJECT · WARDROBE APP</span><span class="status">기획 중</span></div>
+            <div class="project-kicker"><span>SIDE PROJECT · WARDROBE APP</span><span class="status status--indicator status--planned">개발 예정</span></div>
             <h3>오늘뭐입지 <span class="project-platform">모바일 앱</span></h3>
             <p>현재 위치의 날씨, 내 옷장에 등록된 옷, 과거 착장 기록을 함께 활용해 날씨에 맞는 코디를 추천하도록 구상한 앱입니다.</p>
             <div class="project-plan"><strong>옷장 관리</strong> 구매·처분한 옷을 추가·삭제하고 색상과 보온성을 반영해 코디를 제안</div>
