@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f2ea">
+  <meta name="description" content="정은솔 | 특수교육 현장의 문제를 AI·데이터·교육공학으로 연결하는 교사·연구자·개발자 포트폴리오">
+  <meta property="og:title" content="정은솔 | AI × Special Education">
+  <meta property="og:description" content="Special Education · AI · Research · Development">
+  <title>정은솔 | Special Education × AI</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#f6f2ea;--paper-2:#efe9df;--surface:#fffdf9;
+      --ink:#26344c;--ink-2:#455267;--muted:#6e7786;
+      --rust:#af6e53;--rust-light:#ead7cc;--blue:#426bb1;
+      --line:#dedbd5;--shadow:0 12px 38px rgba(41,51,68,.065);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1.75;word-break:keep-all}
+    a{color:inherit;text-decoration:none}button{font:inherit}a,button{outline-offset:4px}
+    button{cursor:pointer}
+    .shell{max-width:1220px;margin:0 auto;padding:0 36px}
+    .eyebrow,.section-index{font-size:11px;letter-spacing:.19em;text-transform:uppercase;font-weight:800;color:var(--rust)}
+    .serif{font-family:'Noto Serif KR',Georgia,serif}
+    .topbar{position:sticky;top:0;z-index:30;background:rgba(246,242,234,.94);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+    .topbar-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:20px;font-weight:800;letter-spacing:-.055em;white-space:nowrap}
+    .brand-mark{font-family:Georgia,serif;font-weight:700;font-size:21px;color:var(--rust);padding-right:11px}
+    .navigation{display:flex;align-items:center;gap:27px;font-size:12px;font-weight:700;color:var(--ink-2)}
+    .navigation a:hover,.footer a:hover{color:var(--rust)}
+    .nav-contact{padding:9px 14px;border:1px solid #bdb5ab;border-radius:3px}
+    .hero{min-height:620px;padding-top:92px;padding-bottom:72px;display:grid;grid-template-columns:1.2fr .8fr;gap:58px;align-items:center}
+    .hero-copy{min-width:0}
+    .hero .eyebrow{margin:0 0 22px}
+    .hero h1{font-weight:600;font-size:clamp(36px,3.8vw,55px);line-height:1.47;letter-spacing:-.065em;margin:0}
+    .hero h1 em{font-style:normal;color:var(--rust)}
+    .hero-intro{margin:28px 0 0;max-width:620px;color:var(--ink-2);line-height:2.12;font-size:14px}
+    .hero-actions{display:flex;align-items:center;gap:22px;margin-top:32px}
+    .button-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--ink);border:1px solid var(--ink);color:#fff;padding:12px 23px;font-weight:700;font-size:12px;border-radius:3px;transition:background .2s}
+    .button-primary:hover{background:#3e4d66}
+    .text-link{font-size:12px;font-weight:700;border-bottom:1px solid var(--rust);padding-bottom:4px}
+    .hero-art{min-height:458px;background:#293953;border-radius:2px;padding:30px;position:relative;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:space-between;box-shadow:25px 26px 0 #e2d8ca}
+    .hero-art:before{content:'';position:absolute;width:430px;height:430px;border:1px solid #aab9d366;border-radius:50%;right:-260px;top:-170px;box-shadow:0 0 0 64px #ffffff08,0 0 0 132px #ffffff08}
+    .hero-art:after{content:'';position:absolute;width:220px;height:220px;border:1px solid #b9907a77;border-radius:50%;left:-140px;bottom:-105px}
+    .hero-art .art-monogram{font-family:Georgia,serif;font-size:24px;color:#eac6b3;letter-spacing:.05em;z-index:1}
+    .hero-art .art-title{font-size:clamp(46px,5vw,72px);line-height:1.02;font-weight:800;letter-spacing:-.09em;z-index:1}
+    .hero-art .art-title span{color:#dec0ae;display:block;font-weight:500;font-family:Georgia,serif;font-style:italic;font-size:.7em;letter-spacing:-.03em;margin-bottom:18px}
+    .hero-art .art-lines{align-self:flex-end;width:90px;border-top:1px solid #d4b2a0;z-index:1}
+    .facts{display:grid;grid-template-columns:1fr 1fr;margin-bottom:113px;border-top:1px solid #cfc9bf;border-bottom:1px solid #cfc9bf}
+    .fact{padding:28px 30px;display:flex;align-items:baseline;gap:19px}
+    .fact:first-child{border-right:1px solid #cfc9bf;padding-left:0}
+    .fact strong{font-size:clamp(28px,3.4vw,43px);font-weight:800;letter-spacing:-.07em;color:var(--ink);white-space:nowrap}
+    .fact span{font-size:13px;color:var(--muted);font-weight:600}
+    section.block{padding-bottom:122px}
+    .section-heading{display:flex;justify-content:space-between;align-items:end;gap:26px;margin-bottom:34px}
+    .section-heading h2{font-size:clamp(29px,3.1vw,42px);letter-spacing:-.067em;line-height:1.35;margin:9px 0 0;font-weight:650}
+    .section-heading .caption{font-size:12px;color:var(--muted);max-width:340px;text-align:right;line-height:1.8}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 25px}
+    .filter-button{border:1px solid #cbc8c3;background:transparent;padding:9px 17px;border-radius:3px;color:#495468;font-weight:700;font-size:12px;transition:background .2s,color .2s}
+    .filter-button:hover{border-color:var(--ink)}
+    .filter-button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+    .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .project-card{background:var(--surface);border:1px solid #e0ddd7;min-width:0;transition:transform .2s,box-shadow .2s}
+    .project-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .project-card[hidden]{display:none}
+    .project-visual{position:relative;height:244px;overflow:hidden;display:grid;place-items:center;isolation:isolate}
+    .project-visual:after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 0%,#ffffff91,transparent 49%);pointer-events:none}
+    .visual-reading{background:#dae4e1}.visual-food{background:#eedbcf}.visual-class{background:#e8e2d9}.visual-research{background:#d9e5ee}.visual-book{background:#e0e1d3}.visual-memory{background:#e6deed}
+    .mock-panel{background:#fffefa;border-radius:9px;box-shadow:0 18px 36px #25354824;transform:rotate(-5deg);padding:16px;width:71%;height:185px;position:relative;z-index:1}
+    .mock-top{display:flex;gap:5px;margin-bottom:17px}.mock-top i{background:#d1d6dc;width:6px;height:6px;border-radius:50%;display:block}
+    .mock-sub{font-size:11px;font-weight:800;letter-spacing:-.01em;color:#42546f;margin:0 0 11px}
+    .mock-bars{display:flex;align-items:end;height:85px;gap:7px;padding:0 4px;border-bottom:1px solid #ced5d9}
+    .mock-bars b{flex:1;background:#719b9a;border-radius:3px 3px 0 0;max-height:100%}
+    .mock-bars b:nth-child(2n){background:#d8a891}
+    .mock-pills{display:flex;gap:7px;margin-top:10px}.mock-pills i{height:8px;background:#e0e8e7;border-radius:20px;flex:1}
+    .visual-food .mock-panel{transform:rotate(4deg);width:65%;height:186px}.mock-meal{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .meal-photo{height:98px;border-radius:6px;background:radial-gradient(circle at 50% 50%,#de9254 0 22%,#f8e2ad 23% 37%,#f5f3eb 38% 55%,#dcb59c 56% 60%,#f2e7db 61%);grid-row:span 2}
+    .mock-row{background:#e8ded0;border-radius:4px;min-height:21px}.mock-row.short{width:74%}
+    .project-signet{font-family:Georgia,serif;font-size:85px;line-height:1;font-weight:700;letter-spacing:-.1em;color:#334c65;z-index:1}
+    .project-signet small{display:block;letter-spacing:.14em;font:700 10px 'DM Sans',sans-serif;text-align:center;margin-top:13px;color:#a57261}
+    .line-chart{width:80%;height:170px;background:#fffefa;border-radius:5px;box-shadow:0 17px 32px #26344c16;transform:rotate(-2deg);z-index:1;padding:19px}
+    .line-chart svg{display:block;width:100%;height:100%}
+    .tiny-book{width:145px;height:192px;background:#3c4b45;transform:rotate(-8deg);color:#f5f0e7;display:flex;flex-direction:column;justify-content:space-between;padding:17px 14px;box-shadow:12px 16px 18px #263e352e;z-index:1}
+    .tiny-book small{font-size:8px;letter-spacing:.1em}.tiny-book strong{font-family:'Noto Serif KR',serif;line-height:1.5;font-size:24px;letter-spacing:-.06em}.tiny-book i{display:block;background:#b0bca5;height:2px;width:42px}
+    .chat-window{width:74%;height:191px;background:#fbf8ff;transform:rotate(4deg);border-radius:15px;padding:23px;box-shadow:0 17px 28px #4f3c6d27;z-index:1}
+    .bubble{height:28px;background:#e1d2ee;border-radius:12px 12px 12px 2px;width:75%;margin-bottom:12px}
+    .bubble.right{margin-left:auto;background:#cec2e3;border-radius:12px 12px 2px 12px;width:61%}.bubble.small{width:54%}
+    .project-info{padding:26px 27px 28px}
+    .project-kicker{display:flex;gap:10px;align-items:center;justify-content:space-between;font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--rust)}
+    .status{color:var(--muted);font-size:10px;font-weight:650;letter-spacing:0}
+    .project-info h3{font-size:21px;font-weight:700;letter-spacing:-.05em;margin:14px 0 9px}
+    .project-info p{font-size:13px;line-height:1.95;color:var(--ink-2);margin:0;min-height:75px}
+    .project-tags{display:flex;gap:7px;flex-wrap:wrap;margin:21px 0 0}
+    .project-tags span{background:#f3f0ea;font-size:10px;color:#697184;font-weight:700;padding:5px 9px;border-radius:2px}
+    .project-footer{margin-top:19px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;font-weight:800;min-height:41px}
+    .project-footer a{color:var(--blue)}
+    .project-footer .unavailable{color:#9399a2;font-weight:600}
+    .history-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:50px}
+    .subheading{font-size:15px;font-weight:800;letter-spacing:-.025em;padding-bottom:14px;border-bottom:2px solid var(--ink);margin:0 0 5px}
+    .history-row{display:grid;grid-template-columns:138px 1fr;gap:18px;align-items:start;padding:20px 0;border-bottom:1px solid var(--line)}
+    .history-row time,.history-row .date{font-size:11px;letter-spacing:.01em;color:var(--rust);font-weight:800;padding-top:3px}
+    .history-row strong{font-size:15px;letter-spacing:-.035em;line-height:1.65}
+    .history-row.milestone{margin-top:22px;background:#eee7dd;border:0;padding:20px;grid-template-columns:84px 1fr}
+    .degree{padding:26px 0;border-bottom:1px solid var(--line)}
+    .degree small{font-size:11px;letter-spacing:.08em;color:var(--rust);font-weight:800}
+    .degree h3{font-size:19px;letter-spacing:-.045em;margin:6px 0 5px}
+    .degree p{margin:0;font-size:13px;color:var(--ink-2)}
+    .publication-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px}
+    .publication-card{background:var(--surface);border:1px solid var(--line);padding:30px;min-width:0}
+    .pub-number{display:flex;justify-content:space-between;align-items:center;color:var(--rust);letter-spacing:.15em;font-size:11px;font-weight:800}
+    .pub-icon{font-size:25px;color:var(--blue);font-family:Georgia,serif;letter-spacing:0}
+    .publication-card h3{font-size:21px;letter-spacing:-.045em;margin:21px 0 11px}
+    .publication-card p{font-size:13px;line-height:1.95;color:var(--ink-2);margin:0 0 16px}
+    .pub-labels{display:flex;gap:7px;flex-wrap:wrap;margin:17px 0}
+    .pub-labels span{font-size:10px;background:var(--paper-2);color:#626b7b;padding:5px 8px;font-weight:700}
+    .more-button{background:transparent;border:0;border-bottom:1px solid #a87661;padding:5px 0;color:#965a41;font-weight:800;font-size:12px}
+    .detail-panel{background:#f7f3eb;margin-top:18px;padding:19px 20px;border-left:2px solid var(--rust)}
+    .detail-panel[hidden]{display:none}
+    .detail-panel p{margin:0 0 12px;font-size:12px}
+    .detail-panel a{font-size:12px;color:#2c5a94;font-weight:800;text-decoration:underline;text-underline-offset:4px}
+    .qualification-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:20px}
+    .qualification-panel{background:var(--surface);border:1px solid var(--line);padding:30px}
+    .qualification-panel h3{font-size:16px;margin:0 0 18px;letter-spacing:-.04em}
+    .credential{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:14px 0;font-size:13px;font-weight:650}
+    .credential small{font-size:10px;color:var(--rust);white-space:nowrap}
+    .skill-grid{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+    .skill-grid span{font-size:11px;padding:8px 11px;background:#e9e6e0;color:#5b6878}
+    .contact-section{background:var(--ink);color:#fff;padding:54px 60px;display:flex;align-items:center;justify-content:space-between;gap:32px;margin-bottom:70px}
+    .contact-section .eyebrow{color:#e5b4a0}
+    .contact-section h2{font-size:clamp(26px,3vw,37px);margin:10px 0 12px;line-height:1.5;letter-spacing:-.05em}
+    .contact-section p{font-size:12px;color:#d2d9e2;margin:0}
+    .contact-section a{background:#f5e3d6;color:var(--ink);border:0;white-space:nowrap}
+    footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--muted);font-size:11px;padding:23px 0 35px}
+    footer a{font-weight:700}
+    @media(max-width:950px){
+      .navigation{gap:12px;font-size:11px}.hero{gap:30px}.hero-art{min-height:375px;box-shadow:14px 14px 0 #e2d8ca}
+      .hero-art .art-title{font-size:49px}.history-grid{gap:26px}.project-visual{height:210px}
+    }
+    @media(max-width:720px){
+      .shell{padding:0 20px}.topbar-inner{height:67px}.brand{font-size:17px}
+      .navigation{gap:12px}.navigation a:nth-child(3),.navigation a:nth-child(4),.navigation a:nth-child(5){display:none}
+      .hero{grid-template-columns:1fr;gap:32px;padding-top:46px;min-height:auto}
+      .hero-art{min-height:270px;grid-row:1;box-shadow:10px 10px 0 #e2d8ca;padding:24px}
+      .hero-art .art-title{font-size:clamp(33px,8.5vw,55px)}
+      .hero h1{font-size:clamp(34px,7vw,46px)}
+      .hero-intro{font-size:13px;margin-top:19px}
+      .facts{margin-bottom:80px}.fact{padding:18px 12px;display:block}.fact:first-child{padding-left:0}
+      .fact strong{font-size:30px;display:block}.fact span{font-size:11px}
+      section.block{padding-bottom:85px}.section-heading{display:block}.section-heading .caption{text-align:left;margin-top:12px}
+      .project-grid,.publication-grid,.history-grid,.qualification-grid{grid-template-columns:1fr}
+      .history-row{grid-template-columns:115px 1fr}.project-visual{height:235px}
+      .publication-card{padding:25px}.contact-section{display:block;padding:34px 27px;margin-bottom:40px}
+      .contact-section a{margin-top:21px}.nav-contact{padding:8px 10px}
+    }
+    @media(max-width:380px){.navigation a:nth-child(2){display:none}.hero-art .art-title{font-size:33px}.fact strong{font-size:26px}.history-row{grid-template-columns:101px 1fr;gap:9px}.history-row strong{font-size:13px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card,.button-primary{transition:none}}
+  
+/* Readability & cohesive visual system — reference-inspired, independently authored */
+:root{--paper:#fff;--paper-2:#f6f7f9;--surface:#fff;--ink:#16181d;--ink-2:#4b535f;--muted:#626b77;--rust:#2551e6;--rust-light:#eef1fe;--blue:#2551e6;--line:#d9dbe0;--shadow:0 8px 24px #16181d0b}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+body{background:#fff;color:#16181d;font:400 16px/1.78 'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;letter-spacing:-.01em;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+.serif,.hero h1,.hero-art .art-title,.hero-art .art-monogram{font-family:'Pretendard',-apple-system,'Apple SD Gothic Neo',sans-serif}
+.shell{max-width:1160px;padding-left:clamp(20px,4vw,44px);padding-right:clamp(20px,4vw,44px)}
+.topbar{background:#fffffff5;border-color:var(--line)}.topbar-inner{height:74px}
+.brand{font-size:20px;letter-spacing:-.035em}.brand-mark{font:700 19px 'Pretendard',sans-serif;color:var(--blue)}
+.navigation{font-size:14px;font-weight:600;gap:25px}.navigation a:hover{color:var(--blue)}.nav-contact{border-color:var(--line);border-radius:8px}
+.hero{min-height:auto;padding-top:85px;padding-bottom:75px;grid-template-columns:minmax(0,1.4fr) minmax(280px,.6fr);gap:36px}
+.eyebrow,.section-index,.project-kicker,.pub-number{font-size:12px;letter-spacing:.035em;font-weight:650;color:var(--muted)}
+.hero .eyebrow{color:var(--blue)}.hero h1{font-size:clamp(37px,4.1vw,57px);font-weight:750;line-height:1.29;letter-spacing:-.044em}.hero h1 em{color:var(--blue)}
+.hero-intro{font-size:17px;color:var(--ink-2);line-height:1.83;max-width:640px}
+.hero-art{min-height:335px;background:#f6f7f9;color:var(--ink);border:1px solid var(--line);box-shadow:none;border-radius:12px;padding:27px}
+.hero-art:before{border-color:#d3dcf6;box-shadow:0 0 0 40px #eef1fe,0 0 0 80px #eef1fe80}
+.hero-art:after{border-color:#d3dcf6;opacity:.6}
+.hero-art .art-monogram{color:var(--blue);font-weight:700;font-size:22px}
+.hero-art .art-title{font-size:clamp(32px,3.1vw,45px);font-weight:800;letter-spacing:-.045em;line-height:1.16}
+.hero-art .art-title span{font:700 .8em/1.1 'Pretendard',sans-serif;color:var(--blue);letter-spacing:-.025em;margin-bottom:16px}
+.hero-art .art-lines{border-color:var(--blue)}
+.button-primary{font-size:15px;background:var(--blue);border-color:var(--blue);border-radius:8px;padding:12px 21px}
+.button-primary:hover{background:#1c3fb5;border-color:#1c3fb5}
+.text-link{font-size:15px;border-color:var(--line)}.text-link:hover{color:var(--blue)}
+.facts{border-color:var(--line);margin-bottom:88px}.fact{padding:25px}.fact:first-child{border-color:var(--line);padding-left:0}
+.fact strong{font-size:36px;letter-spacing:-.04em}.fact span{font-size:16px;color:var(--ink-2)}
+section.block{padding-bottom:94px}
+.section-heading{position:relative;padding-top:18px;margin-bottom:29px}
+.section-heading:before{content:'';position:absolute;left:0;top:0;width:50px;height:4px;border-radius:3px;background:var(--blue)}
+.section-heading h2{font-size:clamp(30px,3.5vw,41px);font-weight:750;letter-spacing:-.035em}
+.filter-button{font-size:14px;font-weight:600;border-radius:8px;padding:10px 15px;border-color:var(--line);color:var(--ink-2)}
+.filter-button[aria-pressed=true]{background:var(--blue);border-color:var(--blue)}
+.project-grid,.publication-grid{gap:16px}
+.project-card,.publication-card,.career-panel,.edu-panel{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:none;overflow:hidden}
+.project-card:hover{transform:none;box-shadow:var(--shadow);border-color:#bcc7e2}
+.project-visual{height:215px;border-bottom:1px solid var(--line);background:#f6f7f9}
+.visual-reading,.visual-food,.visual-class,.visual-research,.visual-book,.visual-memory{background:#f6f7f9}
+.project-visual:after{background:linear-gradient(115deg,#ffffff12,#eef1fe55)}
+.mock-panel,.visual-food .mock-panel,.line-chart,.chat-window,.tiny-book{transform:none;box-shadow:0 7px 20px #1b2b4314}
+.project-signet{color:#3d4e67}.project-signet small{font-size:11px;color:var(--blue)}
+.project-info{padding:26px}.project-kicker{font-size:12px;color:var(--blue)}
+.status{font-size:12px;letter-spacing:0;color:var(--muted)}
+.project-info h3{font-size:21px;line-height:1.45;font-weight:700;letter-spacing:-.03em}
+.project-info p{font-size:15.5px;line-height:1.78;color:var(--ink-2);min-height:0}
+.project-tags span,.pub-labels span{font-size:12px;font-weight:500;background:#f0f2f5;border-radius:6px;color:var(--muted);padding:6px 9px}
+.project-footer{font-size:14px;border-color:var(--line)}
+.project-footer a,.detail-panel a{color:var(--blue)}.project-footer .unavailable{color:var(--muted)}
+.career-panel{padding:10px 30px}
+.career-entry{display:grid;grid-template-columns:210px minmax(0,1fr);gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.career-entry:last-child{border:0}
+.career-date{font:500 13px/1.55 'JetBrains Mono','Pretendard',sans-serif;color:var(--muted)}
+.career-entry strong{font-size:18px;font-weight:700;line-height:1.6}
+.publication-card{padding:27px}.publication-card h3{font-size:21px;font-weight:700;letter-spacing:-.025em;margin:13px 0}
+.publication-card p{font-size:15.5px;color:var(--ink-2);line-height:1.82}
+.pub-number{font-size:12px}.pub-icon{font-size:21px;color:var(--blue)}
+.more-button{font-size:14px;color:var(--blue);border-color:var(--blue)}
+.detail-panel{background:#f6f7f9;border-left:3px solid var(--blue)}.detail-panel p{font-size:14.5px}.detail-panel a{font-size:14px}
+.education-panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.edu-panel{padding:27px 25px;overflow:visible}
+.edu-panel h3{font-size:15px;font-weight:700;color:var(--muted);margin:0 0 23px}
+.edu-list-item{padding:0 0 21px;margin-bottom:21px;border-bottom:1px solid var(--line)}
+.edu-list-item:last-child{padding-bottom:0;margin-bottom:0;border:0}
+.edu-name{font-size:16px;font-weight:700;line-height:1.53;letter-spacing:-.017em}
+.edu-sub{font-size:14px;color:var(--muted);line-height:1.58;margin-top:8px}
+.edu-chip{display:inline-flex;vertical-align:middle;font-size:12px;font-weight:650;color:#254db3;background:#eef1fe;border-radius:6px;padding:3px 8px;margin-left:3px}
+.skill-summary{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.skill-summary span{font-size:13px;color:var(--ink-2);border:1px solid var(--line);border-radius:7px;padding:7px 11px}
+.contact-section{background:#f6f7f9;border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:43px 44px}
+.contact-section .eyebrow{color:var(--blue)}
+.contact-section h2{font-size:clamp(28px,3.4vw,40px);letter-spacing:-.03em;font-weight:700}
+.contact-section p{font-size:15px;color:var(--ink-2)}.contact-section a{color:#fff;background:var(--blue)}
+footer{font-size:13px}
+@media(max-width:1000px){.education-panels{grid-template-columns:1fr}.hero{grid-template-columns:minmax(0,1fr) 300px}.hero-art .art-title{font-size:34px}}
+@media(max-width:720px){.navigation{font-size:12px;gap:10px}.hero{grid-template-columns:1fr;padding-top:40px;padding-bottom:55px}.hero-art{grid-row:1;min-height:235px;padding:23px}.hero-art .art-title{font-size:clamp(35px,8vw,48px)}.hero h1{font-size:clamp(32px,7.8vw,46px)}.hero-intro{font-size:16px}.facts{margin-bottom:70px}.fact{padding:18px 10px}.fact strong{font-size:30px}.fact span{font-size:14px}section.block{padding-bottom:70px}.project-info{padding:22px}.project-info p,.publication-card p{font-size:15px}.publication-card{padding:23px}.career-panel{padding:5px 20px}.career-entry{grid-template-columns:1fr;gap:5px;padding:19px 0}.career-date{font-size:12px}.career-entry strong{font-size:16px}.contact-section{padding:30px 23px}.contact-section p{font-size:14px}}
+@media(max-width:380px){.navigation a:nth-child(2){display:none}.hero-art .art-title{font-size:33px}}
+
+  
+/* Published book cover: use the uploaded original visual, uncropped. */
+.visual-book{display:flex;align-items:center;justify-content:center;background:#f6f7f9;padding:9px 16px}
+.visual-book .book-cover-image{display:block;height:100%;max-height:197px;width:auto;max-width:100%;object-fit:contain;box-shadow:0 7px 18px #17243a2c;border-radius:1px}
+@media(max-width:720px){.visual-book .book-cover-image{max-height:190px}}
+
+/* Personal portfolio identity and user-provided portrait, matched to former hero artwork placement */
+.brand{display:inline-flex;align-items:baseline;gap:9px;font-size:20px;font-weight:750;letter-spacing:-.025em}
+.brand-roman{font-size:12px;font-family:'Pretendard',-apple-system,sans-serif;font-weight:650;letter-spacing:.055em;color:var(--muted)}
+.hero-portrait{margin:0;justify-self:end;align-self:start;width:min(100%,320px);aspect-ratio:1/1;padding:0;border:1px solid var(--line);background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 23px rgba(22,24,29,.06)}
+.hero-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 27%}
+@media(max-width:720px){
+  .brand{font-size:18px;gap:7px}
+  .brand-roman{font-size:10px;letter-spacing:.02em}
+  .hero-portrait{grid-row:1;justify-self:end;width:min(48%,188px);border-radius:10px}
+}
+@media(max-width:380px){
+  .brand{font-size:16px}
+  .brand-roman{font-size:9px}
+}
+
+
+/* Side projects — calm, original illustrative mockups with consistent cards */
+.project-platform{display:inline-block;vertical-align:middle;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:0;margin-left:5px}
+.project-plan{font-size:14px;line-height:1.75;color:var(--ink-2);margin-top:13px;padding:12px 13px;background:#f6f7f9;border-left:2px solid #b4c7f8;border-radius:2px}
+.project-plan strong{font-weight:700;color:var(--ink);margin-right:6px}
+.visual-pet,.visual-reading-drawer,.visual-place,.visual-outfit{display:flex;align-items:center;justify-content:center;background:#f6f7f9}
+.pet-desktop{height:155px;width:78%;max-width:310px;background:#e9eef6;border:1px solid #c9d4e4;border-radius:8px;overflow:hidden;box-shadow:0 8px 20px #1b2b4314}
+.pet-window{height:28px;background:#fff;display:flex;align-items:center;gap:5px;padding:0 10px}
+.pet-window span{width:6px;height:6px;border-radius:50%;background:#d5dce7}
+.pet-window b{font-size:9px;letter-spacing:.11em;color:#73849a;margin-left:auto}
+.pet-screen{height:104px;position:relative;display:grid;place-items:end center;background:linear-gradient(160deg,#e9f1f2,#dce7eb);overflow:hidden}
+.pet-animal{z-index:1;font-size:39px;line-height:1;transform:translateY(-6px)}
+.pet-moon{position:absolute;right:18px;top:3px;font-size:19px;color:#7ca2b2}
+.pet-path{position:absolute;bottom:11px;left:9%;width:82%;height:1px;border-bottom:2px dashed #8ba6af}
+.pet-taskbar{display:flex;gap:10px;align-items:center;padding-left:12px;height:23px;background:#d4dce8;color:#5c6d8c;font-size:10px}
+.drawer-phone{height:187px;width:114px;border:6px solid #394c68;border-radius:18px;background:#fff;box-shadow:0 8px 20px #1b2b4319;padding:9px 7px;position:relative}
+.drawer-top{height:5px;width:31px;background:#d4dce7;border-radius:6px;margin:0 auto 10px}
+.drawer-page{padding:9px 5px;background:#f8f7f3;height:135px;border-radius:3px}
+.drawer-page>span{font-size:7px;letter-spacing:.09em;font-weight:800;color:#6e7887;display:block;margin-bottom:12px}
+.drawer-page i{display:block;background:#b9c2ce;width:100%;height:5px;margin:9px 0;border-radius:2px}
+.drawer-page i:nth-of-type(2){width:79%}
+.drawer-page i.drawer-selected{background:#d0dffc;outline:2px solid #6d9ae9}
+.drawer-page i:nth-of-type(5){width:65%}
+.drawer-selection{font-size:7px;background:#2551e6;color:#fff;text-align:center;padding:3px 0;width:55px;border-radius:4px;margin:3px auto}
+.drawer-home{width:23px;height:3px;border-radius:3px;background:#a1b0c1;margin:5px auto}
+.place-panel{display:grid;grid-template-columns:108px 1fr;align-items:stretch;width:min(80%,320px);height:143px;background:#fff;border:1px solid #dde3ee;border-radius:9px;overflow:hidden;box-shadow:0 10px 24px #1b2b4312}
+.place-image{display:grid;place-items:center;font-size:43px;background:#f2e9da}
+.place-info{padding:16px 14px}.place-info .place-kicker{display:block;font-size:8px;color:#4e73a7;letter-spacing:.08em;font-weight:800;margin-bottom:7px}.place-info strong{font-size:13px;color:#26354c;display:block;margin-bottom:10px}.place-info i{display:block;width:85%;height:5px;border-radius:3px;background:#dce1e8;margin-bottom:7px}.place-info i.short{width:58%}.place-mini{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap}.place-mini span{font-size:8px;padding:3px 5px;background:#eef2f9;border-radius:4px;color:#47658f}
+.outfit-board{width:min(80%,325px);height:157px;background:#fff;border:1px solid #dce3eb;border-radius:10px;padding:17px;box-shadow:0 9px 24px #1b2b4312}
+.outfit-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;color:#26354c}.outfit-top strong{font-size:13px}.outfit-top span{font-size:12px;background:#f0f4f8;padding:4px 7px;border-radius:6px;color:#5c748f}
+.outfit-closet{display:flex;align-items:center;justify-content:space-evenly;gap:7px}.outfit-closet>span{font-size:12px;color:#b7c0cc}
+.outfit-piece{height:54px;flex:1;display:grid;place-items:center;background:#f0f2f5;border-radius:7px;font-size:26px}.outfit-bottom{display:flex;gap:6px;margin-top:11px}.outfit-bottom i{height:5px;background:#d5deea;flex:1;border-radius:5px}.outfit-bottom i.short{flex:.55}
+@media(max-width:720px){.project-platform{font-size:11px}.project-plan{font-size:13px}.pet-desktop{width:82%}.place-panel{width:86%}.outfit-board{width:85%}}
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top" aria-label="정은솔 JEONG EUNSOL 포트폴리오 첫 화면">정은솔 <span class="brand-roman">JEONG EUNSOL</span></a>
+      <nav class="navigation" aria-label="주요 메뉴">
+        <a href="#projects">대표작업</a>
+        <a href="#background">경력</a>
+        <a href="#publication">집필·강의</a>
+        <a href="#expertise">학력·자격</a>
+        <a class="nav-contact" href="#contact">연락 ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="hero" id="top" aria-label="자기소개">
+      <div class="hero-copy">
+        <p class="eyebrow">SPECIAL EDUCATOR · RESEARCHER · DEVELOPER</p>
+        <h1 class="serif">현장의 문제를<br><em>기술로 풀어내는</em><br>교사·연구자·개발자.</h1>
+        <p class="hero-intro">특수교육 현장에서 발견한 문제를 바탕으로 AI 기반 교육도구를 개발하고, 데이터와 교육공학을 연결하여 장애학생의 배움과 참여를 넓히는 방법을 탐색합니다.</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#projects">대표작업 보기 <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#background">경력 보기</a>
+        </div>
+      </div>
+      <figure class="hero-portrait">
+        <img src="https://raw.githubusercontent.com/DDorii73/Introduce/main/portfolio/assets/profile-eunsol.webp?v=20261124-hq" alt="정은솔 프로필 사진" width="800" height="1024" loading="eager" decoding="async" fetchpriority="high">
+      </figure>
+    </section>
+
+    <div class="facts" aria-label="핵심 프로필 정보">
+      <div class="fact"><strong>6년차</strong><span>중등 특수교사</span></div>
+      <div class="fact"><strong>석사</strong><span>연세대학교 인공지능융합교육</span></div>
+    </div>
+
+    <section class="block" id="projects">
+      <div class="section-heading"><div><div class="section-index">01 / SELECTED WORK</div><h2>대표작업</h2></div></div>
+      <div class="filters" role="group" aria-label="대표작업 분류">
+        <button type="button" class="filter-button" aria-pressed="true" data-filter="all">전체</button>
+        <button type="button" class="filter-button" aria-pressed="false" data-filter="dev">교육도구 개발</button>
+        <button type="button" class="filter-button" aria-pressed="false" data-filter="class">수업설계</button>
+        <button type="button" class="filter-button" aria-pressed="false" data-filter="research">연구</button>
+        <button type="button" class="filter-button" aria-pressed="false" data-filter="book">교재집필</button>
+        <button type="button" class="filter-button" aria-pressed="false" data-filter="personal">사이드 프로젝트</button>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card" data-category="dev">
+          <div class="project-visual visual-reading" aria-hidden="true">
+            <div class="mock-panel"><div class="mock-top"><i></i><i></i><i></i></div><div class="mock-sub">READING FLUENCY / ANALYSIS</div>
+              <div class="mock-bars"><b style="height:67%"></b><b style="height:92%"></b><b style="height:46%"></b><b style="height:75%"></b><b style="height:35%"></b><b style="height:85%"></b><b style="height:52%"></b></div>
+              <div class="mock-pills"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-kicker"><span>AI · LEARNING ASSESSMENT</span><span class="status">개발·개선 중</span></div>
+            <h3>AI 읽기 유창성 분석 웹앱</h3>
+            <p>읽기 음성을 전사하고 대치·생략·첨가·반복·자기교정 등 오류를 분류하여 읽기 유창성 평가를 보조합니다. 반복 오류 탐지 방식 등을 개선 중입니다.</p>
+            <div class="project-tags"><span>STT</span><span>Vite</span><span>Firebase</span></div>
+            <div class="project-footer"><a href="https://github.com/DDorii73/blank-app-2" target="_blank" rel="noopener noreferrer">프로젝트 코드 보기 ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="dev">
+          <div class="project-visual visual-food" aria-hidden="true">
+            <div class="mock-panel"><div class="mock-top"><i></i><i></i><i></i></div><div class="mock-sub">MEAL LOG / DAILY RECORD</div>
+              <div class="mock-meal"><div class="meal-photo"></div><div class="mock-row"></div><div class="mock-row short"></div><div class="mock-row"></div><div class="mock-row short"></div></div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-kicker"><span>APP · STUDENT SUPPORT</span><span class="status">프로토타입</span></div>
+            <h3>밥로그 · 식사 기록 웹앱</h3>
+            <p>학생·교사 역할별 급식 및 식사 기록을 관리하는 모바일 중심 웹앱. Google 로그인과 Firebase를 활용한 데이터 관리 구조를 실험했습니다.</p>
+            <div class="project-tags"><span>Vite</span><span>Firebase</span><span>모바일 웹</span></div>
+            <div class="project-footer"><a href="https://github.com/DDorii73/shoollunch2" target="_blank" rel="noopener noreferrer">프로젝트 코드 보기 ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="class">
+          <div class="project-visual visual-class" aria-hidden="true"><div class="project-signet">AI <span style="color:#b17b5f">+</span><small>NOVEL ENGINEERING · LESSON DESIGN</small></div></div>
+          <div class="project-info">
+            <div class="project-kicker"><span>CURRICULUM · GENERATIVE AI</span><span class="status">5차시 설계</span></div>
+            <h3>노블 엔지니어링 × 생성형 AI</h3>
+            <p>발달장애학생을 위한 로드킬 예방 프로젝트. 생활 속 문제를 찾고 Suno·Canva AI로 캠페인 콘텐츠를 제작하도록 구성한 석사 졸업연구입니다.</p>
+            <div class="project-tags"><span>수업 설계</span><span>Suno</span><span>Canva AI</span></div>
+            <div class="project-footer"><span class="unavailable">연구보고서 기반 · 상세 자료 준비 중</span></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="research">
+          <div class="project-visual visual-research" aria-hidden="true">
+            <div class="line-chart"><svg viewBox="0 0 280 130" preserveAspectRatio="none"><g stroke="#e3e7ed" stroke-width="1"><path d="M10 20H270 M10 50H270 M10 80H270 M10 110H270"/></g><path d="M12 95L49 81L84 65L118 73L151 58L185 45L219 53L268 23" fill="none" stroke="#507ba7" stroke-width="3"/><path d="M12 36L49 47L84 55L118 62L151 72L185 82L219 91L268 105" fill="none" stroke="#be8c72" stroke-width="3"/><g fill="#507ba7"><circle cx="268" cy="23" r="4"/></g><g fill="#be8c72"><circle cx="268" cy="105" r="4"/></g></svg></div>
+          </div>
+          <div class="project-info">
+            <div class="project-kicker"><span>RESEARCH · DATA</span><span class="status">연구 수행</span></div>
+            <h3>특수교육 수요 예측 연구</h3>
+            <p>2015~2034년 인구·특수교육 통계를 활용하여 수요 변화를 예측하고 교원양성 교육과정 개선 방향을 제안한 연구입니다. Python으로 데이터를 정리하고 시각화했습니다.</p>
+            <div class="project-tags"><span>Python</span><span>공공데이터</span><span>분석</span></div>
+            <div class="project-footer"><span class="unavailable">연구 논문 상세 링크 추가 예정</span></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="book">
+          <div class="project-visual visual-book"><img class="book-cover-image" src="https://raw.githubusercontent.com/DDorii73/Introduce/main/portfolio/assets/book-cover.webp" alt="『지적장애 교육의 미학』 교재 실제 표지" width="280" height="380" loading="lazy"></div>
+          <div class="project-info">
+            <div class="project-kicker"><span>PUBLICATION · CO-AUTHOR</span><span class="status">2026</span></div>
+            <h3>『지적장애 교육의 미학』</h3>
+            <p>특수교육과 인공지능의 연계, AI 교수학습 자료 개발, 교사 업무 및 개별화교육계획 지원을 주제로 공동 집필한 특수교육 교재입니다.</p>
+            <div class="project-tags"><span>교재 집필</span><span>AI 융합교육</span><span>학지사</span></div>
+            <div class="project-footer"><a href="#publication">집필 활동 자세히 보기 ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="personal">
+          <div class="project-visual visual-memory" aria-hidden="true"><div class="chat-window"><div class="bubble"></div><div class="bubble right"></div><div class="bubble small"></div><div class="bubble right"></div></div></div>
+          <div class="project-info">
+            <div class="project-kicker"><span>SIDE PROJECT · MOBILE AI</span><span class="status">기획·프로토타입</span></div>
+            <h3>기억공작소 <span class="project-platform">모바일 앱</span></h3>
+            <p>세상을 떠난 가족·친구와 나눈 과거 대화 기록을 바탕으로, 익숙한 말투와 추억을 떠올리며 일상의 대화를 이어 갈 수 있도록 구상한 앱입니다.</p>
+            <div class="project-plan"><strong>향후 구상</strong> 사진과 목소리 자료를 활용한 음성통화 및 영상통화 형태의 상호작용</div>
+            <div class="project-tags"><span>대화 AI</span><span>기록 기반 회상</span><span>프라이버시</span></div>
+            <div class="project-footer"><span class="unavailable">개인 프로젝트 · 비공개</span></div>
+          </div>
+        </article>
+        <article class="project-card" data-category="personal">
+          <div class="project-visual visual-pet" aria-hidden="true"><div class="pet-desktop">
+            <div class="pet-window"><span></span><span></span><span></span><b>DESKTOP PET</b></div>
+            <div class="pet-screen"><span class="pet-moon">☼</span><span class="pet-animal">🦔</span><span class="pet-path"></span></div>
+            <div class="pet-taskbar"><span>◈</span><span>▦</span><span>◷</span></div>
+          </div></div>
+          <div class="project-info">
+            <div class="project-kicker"><span>SIDE PROJECT · DESKTOP APP</span><span class="status">프로토타입</span></div>
+            <h3>데스크탑펫 (뾰쭉이) <span class="project-platform">Windows · Mac</span></h3>
+            <p>바탕화면에서 놀고, 산책을 다녀오기도 하는 고슴도치 캐릭터를 기르는 데스크톱 펫 프로젝트입니다. Windows와 macOS 환경을 고려해 제작합니다.</p>
+            <div class="project-tags"><span>데스크톱 펫</span><span>고슴도치</span><span>인터랙션</span></div>
+            <div class="project-footer"><span class="unavailable">개인 제작 프로젝트</span></div>
+          </div>
+        </article>
+        <article class="project-card" data-category="personal">
+          <div class="project-visual visual-reading-drawer" aria-hidden="true">
+            <div class="drawer-phone"><div class="drawer-top"></div><div class="drawer-page"><span>THE READING NOTE</span><i></i><i></i><i class="drawer-selected"></i><i></i><i></i><div class="drawer-selection">문장 저장 +</div></div><div class="drawer-home"></div></div>
+          </div>
+          <div class="project-info">
+            <div class="project-kicker"><span>SIDE PROJECT · READING APP</span><span class="status">기획·개발 중</span></div>
+            <h3>서랍형 독서 <span class="project-platform">모바일 앱</span></h3>
+            <p>종이책에서 기록하고 싶은 문구를 휴대전화로 촬영하고 드래그해 선택하면, 책 정보·페이지·문구를 함께 저장하도록 설계한 독서 기록 앱입니다.</p>
+            <div class="project-plan"><strong>향후 구상</strong> 전자책 화면을 캡처한 뒤 문구를 선택해 기록하는 기능</div>
+            <div class="project-tags"><span>독서 기록</span><span>촬영·문구 선택</span><span>아카이빙</span></div>
+            <div class="project-footer"><span class="unavailable">개인 제작 프로젝트</span></div>
+          </div>
+        </article>
+        <article class="project-card" data-category="personal">
+          <div class="project-visual visual-place" aria-hidden="true">
+            <div class="place-panel"><div class="place-image">🍽️</div><div class="place-info"><span class="place-kicker">MY FOOD ARCHIVE</span><strong>오늘의 맛집 기록</strong><i></i><i class="short"></i><div class="place-mini"><span>⌖ 위치 후보</span><span>✦ 메뉴 분석</span></div></div></div>
+          </div>
+          <div class="project-info">
+            <div class="project-kicker"><span>SIDE PROJECT · FOOD ARCHIVE</span><span class="status">기획·개발 중</span></div>
+            <h3>나의맛집플레이스 <span class="project-platform">모바일 앱</span></h3>
+            <p>다녀온 음식점을 나만의 목록으로 기록하는 앱입니다. 음식 사진을 분석해 위치와 메뉴 정보를 제안받고, 식당 이름을 확인·저장해 방문 목록을 관리하도록 설계합니다.</p>
+            <div class="project-tags"><span>음식 사진 AI</span><span>장소 기록</span><span>나만의 리스트</span></div>
+            <div class="project-footer"><span class="unavailable">개인 제작 프로젝트</span></div>
+          </div>
+        </article>
+        <article class="project-card" data-category="personal">
+          <div class="project-visual visual-outfit" aria-hidden="true">
+            <div class="outfit-board"><div class="outfit-top"><strong>오늘 뭐 입지?</strong><span>☀ 17°</span></div><div class="outfit-closet"><div class="outfit-piece">🧥</div><span>＋</span><div class="outfit-piece">👖</div><span>＋</span><div class="outfit-piece">👟</div></div><div class="outfit-bottom"><i></i><i></i><i class="short"></i></div></div>
+          </div>
+          <div class="project-info">
+            <div class="project-kicker"><span>SIDE PROJECT · WARDROBE APP</span><span class="status">기획·개발 중</span></div>
+            <h3>오늘뭐입지 <span class="project-platform">모바일 앱</span></h3>
+            <p>현재 위치의 날씨, 내 옷장에 등록된 옷, 과거 착장 기록을 함께 활용해 날씨에 맞는 코디를 추천하도록 구상한 앱입니다.</p>
+            <div class="project-plan"><strong>옷장 관리</strong> 구매·처분한 옷을 추가·삭제하고 색상과 보온성을 반영해 코디를 제안</div>
+            <div class="project-tags"><span>위치 기반 날씨</span><span>옷장 관리</span><span>코디 추천</span></div>
+            <div class="project-footer"><span class="unavailable">개인 제작 프로젝트</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="background"><div class="section-heading"><div><div class="section-index">02 / EXPERIENCE</div><h2>경력</h2></div></div><div class="career-panel"><div class="career-entry"><span class="career-date">2026.03 — 현재</span><strong>인천남부특수교육지원센터</strong></div><div class="career-entry"><span class="career-date">2024.03 — 2026.02</span><strong>운서중학교</strong></div><div class="career-entry"><span class="career-date">2021.03 — 2024.02</span><strong>영종중학교</strong></div><div class="career-entry"><span class="career-date">2021학년도</span><strong>인천 중등특수교사·초등특수교사 임용시험 동시 합격</strong></div></div></section>
+
+    <section class="block" id="publication">
+      <div class="section-heading"><div><div class="section-index">03 / PUBLICATION & TEACHING</div><h2>교재 집필 및 강의</h2></div></div>
+      <div class="publication-grid">
+        <article class="publication-card">
+          <div class="pub-number"><span>01 · BOOK</span><span class="pub-icon" aria-hidden="true">¶</span></div>
+          <h3>교재 집필</h3>
+          <p>『지적장애 교육의 미학』<br>류재연·정혜윤·정은솔 공저 · 학지사 · 2026</p>
+          <div class="pub-labels"><span>공동저자</span><span>특수교육 × AI</span></div>
+          <button type="button" class="more-button" data-toggle="book-detail" aria-expanded="false" aria-controls="book-detail">자세히 보기 +</button>
+          <div id="book-detail" class="detail-panel" hidden>
+            <p><strong>『지적장애 교육의 미학』</strong><br>학지사 · 2026.08.10 · ISBN 978-89-997-3781-7</p>
+            <p>특수교육과 인공지능 융합의 필요성, AI 기반 교수학습 자료 개발, 교사 업무 효율화 및 개별화교육계획 작성 지원 내용을 담당하여 집필했습니다.</p>
+            <a href="https://bnk.kpipa.or.kr/home/v3/addition/adiPromoMetaDataView02/seq_20260814102534490762" target="_blank" rel="noopener noreferrer">도서 정보 외부 링크 ↗</a>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="pub-number"><span>02 · LECTURES</span><span class="pub-icon" aria-hidden="true">↗</span></div>
+          <h3>생성형 AI 활용 강의</h3>
+          <p>2024년·2025년 대학 특수교육과 강의<br>대상: 예비 특수교사 · 교안 및 실습 중심</p>
+          <div class="pub-labels"><span>교안</span><span>예비 특수교사</span><span>생성형 AI</span></div>
+          <button type="button" class="more-button" data-toggle="lecture-detail" aria-expanded="false" aria-controls="lecture-detail">자세히 보기 +</button>
+          <div id="lecture-detail" class="detail-panel" hidden>
+            <p>생성형 AI를 활용한 교수학습 자료 제작, 프롬프트 작성, 음악·퀴즈 제작, 개별화교육계획 작성 지원과 교사의 검토 역할을 주제로 강의했습니다.</p>
+            <p>교안 원문은 현재 포트폴리오에 공개되어 있지 않습니다.</p>
+          </div>
+        </article>
+        <article class="publication-card">
+          <div class="pub-number"><span>03 · CURRICULUM</span><span class="pub-icon" aria-hidden="true">✳</span></div>
+          <h3>교수학습 과정안 개발</h3>
+          <p>발달장애학생 대상 노블 엔지니어링과 생성형 AI 융합 5차시 수업 설계 및 공유</p>
+          <div class="pub-labels"><span>5차시</span><span>노블 엔지니어링</span><span>AI 융합수업</span></div>
+          <button type="button" class="more-button" data-toggle="curriculum-detail" aria-expanded="false" aria-controls="curriculum-detail">자세히 보기 +</button>
+          <div id="curriculum-detail" class="detail-panel" hidden><p>로드킬 예방을 주제로 문제를 탐색하고 Suno로 캠페인 음악을, Canva AI로 시각적 자료를 제작하도록 구성했습니다.</p></div>
+        </article>
+        <article class="publication-card">
+          <div class="pub-number"><span>04 · DATA PROJECT</span><span class="pub-icon" aria-hidden="true">⌁</span></div>
+          <h3>공모전 참여</h3>
+          <p>특수학교 입지 분석 공공데이터 프로젝트 참여 · 자료 수집 및 시각화 담당</p>
+          <div class="pub-labels"><span>공공데이터</span><span>시각화</span><span>교육시설</span></div>
+          <button type="button" class="more-button" data-toggle="contest-detail" aria-expanded="false" aria-controls="contest-detail">자세히 보기 +</button>
+          <div id="contest-detail" class="detail-panel" hidden><p>과밀 특수학급과 교육시설 접근성 문제를 공공데이터 관점에서 분석하고, 특수학교 입지 선정 관련 자료를 수집·시각화했습니다.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="expertise"><div class="section-heading"><div><div class="section-index">04 / EDUCATION & CREDENTIALS</div><h2>학력·자격</h2></div></div>
+<div class="education-panels">
+  <div class="edu-panel"><h3>학력</h3>
+  <div class="edu-list-item"><div class="edu-name">연세대학교 교육대학원 <span class="edu-chip">석사</span></div><div class="edu-sub">2026.08 졸업 · 인공지능융합교육</div></div>
+  <div class="edu-list-item"><div class="edu-name">나사렛대학교 <span class="edu-chip">학사</span></div><div class="edu-sub">2019.02 졸업 · 초등특수교육과·중등특수교육과</div></div>
+  </div>
+  <div class="edu-panel"><h3>교원 자격·전문활동</h3>
+  <div class="edu-list-item"><div class="edu-name">중등 특수학교 1급 정교사</div><div class="edu-sub">교원 자격</div></div>
+  <div class="edu-list-item"><div class="edu-name">초등 특수학교 2급 정교사</div><div class="edu-sub">교원 자격</div></div>
+  <div class="edu-list-item"><div class="edu-name">인천 AI 선도교사</div><div class="edu-sub">AI·디지털 교육 전문활동</div></div>
+  </div>
+  <div class="edu-panel"><h3>AI·데이터 자격</h3>
+  <div class="edu-list-item"><div class="edu-name">ADsP</div><div class="edu-sub">데이터분석 준전문가</div></div>
+  <div class="edu-list-item"><div class="edu-name">AICE Basic</div><div class="edu-sub">인공지능 활용 역량</div></div>
+  <div class="edu-list-item"><div class="edu-name">Google Certified Educator Level 1</div><div class="edu-sub">Google 교육 도구 활용 역량</div></div>
+  </div>
+</div><div class="skill-summary"><span>Special Education</span><span>AI & Data</span><span>EdTech</span><span>Python</span><span>Vite · Firebase</span></div>
+</section>
+
+    <section class="contact-section" id="contact">
+      <div><div class="eyebrow">CONNECT & COLLABORATE</div><h2 class="serif">교육 현장의 문제를<br>함께 탐색하고 싶습니다.</h2><p>AI 융합교육 · 특수교육공학 · 연구 협업 · 교육도구 개발</p></div>
+      <a class="button-primary" href="https://github.com/DDorii73" target="_blank" rel="noopener noreferrer">GitHub 프로필 ↗</a>
+    </section>
+  </main>
+  <footer class="shell"><span>© 2026 Eunsol Jeong · Special Education × AI</span><a href="#top">맨 위로 ↑</a></footer>
+
+  <script>
+    (function(){
+      var buttons=document.querySelectorAll('[data-filter]');
+      var cards=document.querySelectorAll('[data-category]');
+      buttons.forEach(function(button){
+        button.addEventListener('click',function(){
+          var selected=button.getAttribute('data-filter');
+          buttons.forEach(function(b){b.setAttribute('aria-pressed',String(b===button));});
+          cards.forEach(function(card){card.hidden=(selected!=='all' && card.getAttribute('data-category')!==selected);});
+        });
+      });
+      document.querySelectorAll('[data-toggle]').forEach(function(button){
+        button.addEventListener('click',function(){
+          var panel=document.getElementById(button.getAttribute('data-toggle'));
+          if(!panel)return;
+          var isOpen=button.getAttribute('aria-expanded')==='true';
+          button.setAttribute('aria-expanded',String(!isOpen));
+          button.textContent=isOpen?'자세히 보기 +':'접기 −';
+          panel.hidden=isOpen;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
